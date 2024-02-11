@@ -99,6 +99,10 @@ def contact(request):
 @login_required(login_url ='login')  
 def ongoing(request): 
   return render(request, 'ongoing.html') 
+
+@login_required(login_url ='login')  
+def upcoming(request): 
+  return render(request, 'upcoming.html') 
   
 def is_admin(user): 
      return user.is_staff  # Assuming staff members are admins 

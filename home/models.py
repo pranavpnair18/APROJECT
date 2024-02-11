@@ -7,6 +7,7 @@ class AuctionListing(models.Model):
     reserve_price = models.DecimalField(max_digits=10, decimal_places=2)
     current_bid = models.DecimalField(max_digits=10, decimal_places=2)
     auction_end = models.DateTimeField()
+    auction_start = models.DateTimeField(null=True)
     seller = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True)
     def __str__(self):
