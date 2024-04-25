@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+profile
+{% endblock %}
+
+{% block content %}
+
+<div class="profile">
+  <div class="background"></div>
+  <div class="bgp">
+    <i class="bi bi-person-circle" style="font-size: 9em; margin-left: 600px;"></i>
+    <h4 style="margin-left: 610px; margin-top: -28px; width: 500px;">{{request.user}}</h4>
+    <h4 style="margin-left: 570px; margin-top: -10px;">Balance:{{ request.user.userprofile.avail_bal }}</h4>
+    <b style="margin-left: 630px; margin-top: -5px; width: 500px;color: #f67044;"> INDIAN </b>
+  </div>
+</div>
+<div style="text-align: center;margin: 1%;">
+<h2>INTRODUCING <span>"BIDCOIN"</span></h2>
+<div><h4>What is 'BIDCOIN'?</h4></div>
+<div><h6>BIDCOIN is a type of virtual currency that can be used in 𝕭𝖎𝖉 𝕱𝖔𝖗𝖒𝖚𝖑𝖆 to buy and sell goods and services. It is not issued or controlled by a central authority, but instead is created and managed by a network of users who follow a set of rules and protocols.
+
+  Using BIDCOIN in an auction site can have several benefits. For example, it can simplify the payment process by eliminating the need for users to enter their credit card information for each transaction. It can also reduce transaction fees, as virtual currency transactions typically have lower fees than credit card transactions.
+  
+  However, there are also some potential risks and challenges associated with using BIDCOIN in an auction site. For example, the value of virtual currency can be volatile, which can make it difficult for users to predict the cost of their transactions. Additionally, virtual currency transactions are irreversible, which means that once a transaction is made, it cannot be undone.
+  
+  To mitigate these risks, it is important for auction sites that use BIDCOIN to have clear and transparent policies regarding the use of virtual currency. This can include providing clear information about the value of BIDCOIN, setting limits on the amount of BIDCOIN that can be used in a single transaction, and providing user support for any issues that may arise.
+  
+  Overall, BIDCOIN and other virtual currencies can be a useful tool for online auctions, but it is important to approach their use with caution and to take steps to ensure the safety and security of users.</h6></div>
+
+
+  <button id="open-popup" class="pob">Add Coin+ </button>
+
+<div id="popup" class="overlay">
+  <div class="popup-inner">
+    <h2>Global Conversions</h2>
+    <p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Currency</th>
+            <th>BidCOIN</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1 Dollar</td>
+            <td>= 10 BC</td>
+          </tr>
+          <tr>
+            <td>10 Rupees</td>
+            <td>= 1 BC</td>
+          </tr>
+          <tr>
+            <td>1 Euro</td>
+            <td>= 9 BC</td>
+          </tr>
+          <tr>
+            <td>1 Pound</td>
+            <td>= 10 BC</td>
+          </tr>
+          <tr>
+            <td>1 Swiss Franc</td>
+            <td>= 9 BC</td>
+          </tr>
+          <tr>
+            <td>20 Yen</td>
+            <td>= 1 BC</td>
+          </tr>
+        </tbody>
+      </table><br>
+      <p>As for the security reasons, all the currency transactions are done outside the site by using legal transaction methods.this is the step by step procedure you should take...</p><p><strong>step 1</strong>->Mail the required amount of curency you want to convert, and along with your id proof and nationality certificate to <a href="mailto:lekshmiaswinanaan@gmail.com">lekshmiaswinanaan@gmail.com</a></p><p><strong>step 2</strong>-Wait for the response from our staffs after your id validation</p><p><strong>step 3</strong>-when you recieve the conformation mail, transfer the required mamount of money specified in the mail via upi payment</p>
+
+    </p>
+    <button id="close-popup" class="cpop">Close</button>
+  </div>
+</div>
+
+<style>
+  strong{
+    color: black;
+  }
+  p{
+    text-align: left;
+    margin-bottom: 4px;
+  }
+  table {
+  border-collapse: collapse;
+  width: 80%;
+  margin: 0 auto;
+}
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+  font-size: medium;
+}
+a{
+  color: white;
+  text-decoration: none;
+}
+a:hover{
+  background-color: black;
+}
+.pob{
+     position: absolute;
+     z-index: 1000;
+     margin-top: -28%;
+     margin-left: 12%;
+
+     background-color: #f67044;
+     border-radius: 15px;
+     border-color: white;
+     padding: 4px;
+   }
+   .overlay {
+    position: fixed;
+    z-index: 1500;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+  }
+  
+  .overlay.active {
+    display: block;
+  }
+  
+  .popup-inner {
+    position: fixed;
+    z-index: 2000;
+    top: 1%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ec5320;
+    padding: 20px;
+    border: 2px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    max-width: 80%;
+    width: 500px;
+    overflow-y: hidden;
+   
+  }
+.cpop{
+
+  color: black;
+  background-color: #ec5320;
+  border: 1px solid white;
+  border-radius: 15px;
+  padding: 5px;
+  margin: 5px;
+}
+
+</style>
+<script>
+const openPopupBtn = document.getElementById("open-popup");
+const closePopupBtn = document.getElementById("close-popup");
+const popup = document.getElementById("popup");
+
+openPopupBtn.addEventListener("click", () => {
+  popup.classList.add("active");
+});
+
+closePopupBtn.addEventListener("click", () => {
+  popup.classList.remove("active");
+});
+  </script>
+
+{% endblock %}

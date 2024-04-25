@@ -1,62 +1,137 @@
-{% load static %} 
+{% load static %}
+<!DOCTYPE html>
+    <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>LOGIN</title>
+     <link rel="icon"  type="x-icon"  href="#">
+     <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}?{% now "U" %}">
+    </head>
+
+ <body>
+    <video autoplay loop muted>
+        <source src="https://cdn.pixabay.com/video/2021/12/25/102436-660253854_large.mp4" type="video/mp4">
+      </video>
   
- <!DOCTYPE html> 
-  
- <html lang="en" dir="ltr"> 
-  
- <head> 
-   <meta charset="UTF-8"> 
-   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-   <title>Login Form </title> 
-   <link rel="stylesheet" href="{% static '/css/login.css' %}"> 
-  
-   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous"> 
-  
-   <style> 
-     .error{ 
-       color: #e81212; 
-       font-size: 12px; 
-     } 
-   </style> 
- </head> 
- <body> 
- <div class="cont"> 
-   <div class="container"> 
-     <div class="wrapper"> 
-       <div class="title"> 
-         <span>Login Form 
-         </div> 
-         <form method="POST" action=""> 
-           {% csrf_token %} 
-           <div class="row"> 
-             <i class="fas fa-user"></i> 
-             <input type="text" name="username" placeholder="Username..." class="form-control"> 
-           </div> 
-           <div class="row"> 
-             <i class="fas fa-key"></i> 
-             <input type="password" name="password" placeholder="Password..." class="form-control"> 
-           </div> 
-           <div class="pass"> 
-             <a href="{% url 'reset_password' %}" class="ml-2">Forgot Password?</a> 
-           </div> 
-           <div class="row button"> 
-             <input type="submit" value="Login"> 
-           </div> 
-           <div class="error"> 
-           {% for message in messages %} 
-           <p id="message"> 
-             {{ message }} 
-           </p> 
-           {% endfor %} 
-           </div> 
-           <div class="signup-link"> 
-             Don't have an account ? <a href="{% url 'register' %}" class="ml-2">Sign Up</a> 
-           </div> 
-         </form> 
-       </div> 
-     </div> 
-     </div> 
-   </body> 
-  
-  
- </html>
+     <div class="box">
+         <form method="POST" action="#">
+            {% csrf_token %}
+             <h2>SIGN-IN</h2>
+             <div class="input-field">
+               
+                <input type="text" id="username" name="username" class="email" autocomplete="username"  required>
+                 <!-- <label>Enter email</label> -->
+             </div>
+             <div class="input-field">
+                <input type="password" id="password" name="password" autocomplete="current-password" required>
+                 <!-- <label>Enter password</label> -->
+             </div>
+             <div class="forgot">
+                 <label for="Save-login">
+                     <input type="checkbox" id="Save-login">
+                     <p>Save login</p>
+                 </label>
+                 <a href="{% url 'reset_password' %}">Forgot password?</a>
+             </div>
+             <button type="submit">login</button>
+
+             <div class="error"> 
+                {% for message in messages %} 
+                <p id="message"> 
+                  {{ message }} 
+                </p> 
+                {% endfor %} 
+                </div> 
+              <div class="Create-account">
+                 <p>Don't have an account? <a href="{% url 'register' %}">Create account</a></p>
+              </div>
+              
+         </form>
+      </div>
+
+
+    </body>
+</html>
+<!-- <!DOCTYPE html>
+    <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>LOGIN</title>
+     <link rel="icon"  type="x-icon"  href="#">
+     <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    </head>
+
+ <body>
+
+    <div class="bg"></div>
+     <div class="container">
+        <div class="content">
+            <h2 class="logo">Auction</h2>
+            <div class="text-sci">
+                <h2>Welcome <br><span>to Auction</span></h2>
+                <p>hello thanks for ur visit</p>
+            </div>
+        </div>
+
+
+        <div class="logreg-box">
+
+             Login -->
+            <!-- <div class="form_box login">
+             <form method="POST" action="">
+                {% csrf_token %}
+                <h2> Log In</h2>
+
+
+                <div class="input-box">
+                    <span class="icon"> </span>
+                        <input type="text" placeholder="Username"> -->
+                       
+                        <!-- <input type="text" id="username" name="username" class="email" autocomplete="username" required>
+                   
+                </div>
+
+                <div class="input-box">
+                    <span class="icon"> </span> -->
+                        <!-- <input type="password" placeholder="password" required > -->
+                       
+                        <!-- <input type="password" id="password" name="password" autocomplete="current-password" required>
+
+                   
+                </div>
+                <div class="remember-forgot">
+                    <label ><input type="checkbox">Remember Me</label>
+                    <a href="{% url 'reset_password' %}">Forgot Password</a>
+                </div>
+               
+                <button type="submit" class="btn">login</button>
+
+
+                <div class="login-register">
+                    <p>Don't have an account? <a href="{% url 'register' %}" class="register-link">Create account</a></p>
+                </div>
+                </form>
+            </div> 
+          -->
+
+
+     <!-- <script src="login2.js"></script> -->
+     <!-- <script>
+        loginLink.addEventListener('click',() => {
+    logregBox.classList.remove('active');
+});
+
+
+email.forEach((mail,i)=>{
+    mail.addEventListener('blur',() =>{
+        if(mail.value!=''){
+            text[i].classList.add('active');
+        }
+        else{
+            text[i].classList.remove('active');
+        }
+    })
+})
+     </script> -->
+    <!-- </body>
+</html> -->

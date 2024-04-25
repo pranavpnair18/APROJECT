@@ -1,9 +1,398 @@
-{% extends 'base.html' %} 
- {% block title %} 
- home
-   {% endblock %} 
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>auction</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}?{% now "U" %}">    
+
+    
+</head>
+
+
+</head>
+<body>
+        <!-- Navbar --> 
+        <div class="nav">
+            <div class="logo-container">
+                <img src="{% static 'img/bidformula1.jpg' %}" class="logo" alt="Logo">
+                <span> 
+                  <h5> 𝕭𝖎𝖉 𝕱𝖔𝖗𝖒𝖚𝖑𝖆</h5>
+                  <h6>ɴᴏ ʟɪᴅ ᴏɴ ʙɪᴅs</h6>
+                </span>
+            </div>
+            <div class="nav-list">
+                <ul class="list">
+                  <li class="list-items"><a class="active" href="/home">Home</a></li>
+                  <li class="list-items"><a href="/history">History</a></li>
+                  <li class="list-items"><a href="/about">About</a></li>
+                  <li class="list-items"><a href="/contact">Contact</a></li>
+                  {% if user.is_authenticated and user.is_superuser or user.is_staff  %} 
+                  <li class="list-items"> 
+                    <a href="/admin">Admin </a> 
+                  </li> 
+                  {% endif %} 
+    
+                    <li class="dropdown">
+                        <i class="bi bi-person-circle" id="avatar" data-bs-toggle="dropdown"></i>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="{% url 'profile' %}">{{request.user}}</a></li>
+                          <li><a class="dropdown-item" href="/profile">
+                              Balance :<br><i class="bi bi-cash"> {{ request.user.userprofile.avail_bal }}</i>
+                          </a></li>
+                          <hr style="color: #fff;">
+                          <li><a class="dropdown-item logout-btn" href="{% url 'logout_user' %}">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    
+
+<!-- carousel -->
+    <div class="carousel">
+      <!-- list item -->
+      <div class="list">
+          <div class="item">
+              <img src="static/img/School of Athens.jpg">
+              <div class="content">
+                  <div class="status">TRENDING</div>
+                  <div class="title">SCHOOL OF ATHENS</div>
+                  <div class="category">PAINTING</div>
+                  <div class="des">
+                     
+                      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
+                  </div>
+                  <div class="buttons">
+                      <button>SEE MORE</button>
+                      
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <img src="static/img/submariner.jpg">
+              <div class="content">
+                  <div class="status">TRENDING</div>
+                  <div class="title">ROLEX SUBMARINER</div>
+                  <div class="category">WRIST WATCH</div>
+                  <div class="des">
+                      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
+                  </div>
+                  <div class="buttons">
+                      <button>SEE MORE</button>
+                     
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <img src="/static/img/diamond1.jpg">
+              <div class="content">
+                  <div class="status">TRENDING</div>
+                  <div class="title">BLUE DIAMOND</div>
+                  <div class="category">LUXURY STONE</div>
+                  <div class="des">
+                      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
+                  </div>
+                  <div class="buttons">
+                      <button>SEE MORE</button>
+                      
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <img src="static/img/bmw m1.jpg">
+              <div class="content">
+                  <div class="status">TRENDING</div>
+                  <div class="title">BMW M1</div>
+                  <div class="category">SUPERCAR</div>
+                  <div class="des">
+                      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
+                  </div>
+                  <div class="buttons">
+                      <button>SEE MORE</button>
+                    
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- list thumnail -->
+      <div class="thumbnail">
+          <div class="item">
+              <img src="static/img/School of Athens.jpg">
+              <div class="content">
+                  <div class="title">
+                      SCHOOL OF ATHENS
+                  </div>
+                  <div class="description">
+                      Painting
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <img src="/static/img/rolex.jpg">
+              <div class="content">
+                  <div class="title">
+                      SUBMARINER
+                  </div>
+                  <div class="description">
+                      Wristwatch
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <img src="static/img/diamond.jpg">
+              <div class="content">
+                  <div class="title">
+                      BLUE DIAMOND
+                  </div>
+                  <div class="description">
+                      Stone
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <img src="/static/img/BMW M.jpg">
+              <div class="content">
+                  <div class="title">
+                      BMW M1
+                  </div>
+                  <div class="description">
+                      SuperCar
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- next prev -->
+
+      <div class="arrows">
+          <button id="prev"><</button>
+          <button id="next">></button>
+      </div>
+      <!-- time running -->
+      <div class="time"></div>
+  </div>
+
   
- {% block content %} 
- <h1>home </h1>
+  <section>
+  <div class="section-parallax">
+    <div class="background" style="background:#000000"></div>
+      
+    <div class="gap"></div>
+    <div class="main">
+      <ul class="cards">
+        <li class="cards_item">
+          <div class="card">
+            <div class="card_image"><img src="https://people.com/thmb/Wcjnd7vAwmFAsasWdqsIskWdwZY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(999x0:1001x2):format(webp)/royal-jewels-4-2000-1-82b681468f314efe8c4ff12cf4eeecb0.jpg"></div>
+            <div class="card_content">
+              <h2 class="card_title">Queen Victoria's Emerald and Diamond Tiara<br>&#x2022;<br> BID: 29500 BC</h2>
+              <div class="card_text">
+                </div>
+            </div>
+          </div>
+        </li>
+  
+        <li class="cards_item">
+          <div class="card">
+            <div class="card_image"><img src="https://wallpapercave.com/wp/wp2280135.jpg"></div>
+            <div class="card_content">
+              <h2 class="card_title">Salvator Mundi by Da Vinci <br>&#x2022; <br>BID: 98500 BC</h2>
+              <div class="card_text">
+                </div>
+            </div>
+          </div>
+        </li>
+  
+        <li class="cards_item">
+          <div class="card">
+            <div class="card_image"><img src="https://assets1.ignimgs.com/2019/05/31/mario-64---button-1559263987447.jpg?width=300&crop=1%3A1%2Csmart&auto=webp"></div>
+            <div class="card_content">
+              <h2 class="card_title">Super Mario 64 <br> &#x2022; <br> BID: 12550 BC</h2>
+              <div class="card_text">
+                </div>
+            </div>
+          </div>
+        </li>
+  
+        <li class="cards_item">
+          <div class="card">
+            <div class="card_image"><img src="https://www.graff.com/dw/image/v2/BFNT_PRD/on/demandware.static/-/Library-Sites-GraffSharedLibrary/default/dw7ae58c0b/images/in-the-loupe/Graff-Diamonds-In-The-Loupe-A-Symphony-in-Pink-2500x1500.jpg"></div>
+            <div class="card_content">
+              <h2 class="card_title">Harry Winston's Graff Pink Diamond <br>&#x2022;<br> BID: 34200 BC</h2>
+              <div class="card_text">
+                </div>
+            </div>
+          </div>
+        </li>
+        <li class="cards_item">
+          <div class="card">
+            <div class="card_image"><img src="https://www.supercars.net/blog/wp-content/uploads/2016/03/876354.jpg"></div>
+            <div class="card_content">
+              <h2 class="card_title">Bugatti 64 Coupe <br> &#x2022;<br> BID: 84000 BC</h2>
+              <div class="card_text">
+                </div>
+            </div>
+          </div>
+        </li>
+    
+        <li class="cards_item">
+          <div class="card">
+            <div class="card_image"><img src="https://cdn.shopify.com/s/files/1/0556/4406/1858/files/cora-sun-drop-diamond_1_480x480.jpg?v=1690641740"></div>
+            <div class="card_content">
+              <h2 class="card_title"> Core Sun-Drop Dimaond <br> &#x2022; <br> BID: 42000 BC</h2>
+              <div class="card_text">
+                </div>
+            </div>
+          </div>
+        </li>
+        <li class="cards_item">
+          <div class="card">
+            <div class="card_image"><img src="https://assets.vogue.com/photos/5892029a0e6cdc8a1928e191/master/w_1920,c_limit/F-hermes-crocodile-himalayan-birkin.jpg"></div>
+            <div class="card_content">
+              <h2 class="card_title">Crocodile Hermes Birkin Bag  <br> &#x2022; <br> BID: 44000 BC</h2>
+              <div class="card_text">
+                </div>
+            </div>
+          </div>
+        </li>
+      <div class="albtn">
+        <li class="cards_item1">
+          <button class="btn-31">
+            <a  href="{% url 'present' %}">
+            <span class="text-container">
+              <span class="text"><i class="bi bi-box-arrow-up-right"> view present auction</i></span>
+            </span>
+            </a>
+          </button>
+        </li>
+
+        <li class="cards_item1">
+          <button class="btn-31">
+            <a  href="#">
+            <span class="text-container">
+              <span class="text"><i class="bi bi-box-arrow-up-right"> view all auction</i></span>
+            </span>
+            </a>
+          </button>
+        </li>
+
+        </div>
+      </ul>
+    </div>
  
- {% endblock %}
+  </div>
+</section>
+  <section class="Balance">
+
+    <div class="thank">
+      <h1 style="padding: 20px;">Thanks for Participating in our Auctions</h1>
+      <h2 style="margin-left: 240px;">  Provide your rating </h2>
+    </div>
+    <div class="rating">
+      <input type="radio" id="star5" name="rate" value="5" />
+      <label title="Excellent!" for="star5">
+        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+          <path
+            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+          ></path>
+        </svg>
+      </label>
+      <input value="4" name="rate" id="star4" type="radio" />
+      <label title="Great!" for="star4">
+        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+          <path
+            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+          ></path>
+        </svg>
+      </label>
+      <input value="3" name="rate" id="star3" type="radio" />
+      <label title="Good" for="star3">
+        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+          <path
+            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+          ></path>
+        </svg>
+      </label>
+      <input value="2" name="rate" id="star2" type="radio" />
+      <label title="Okay" for="star2">
+        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+          <path
+            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+          ></path>
+        </svg>
+      </label>
+      <input value="1" name="rate" id="star1" type="radio" />
+      <label title="Bad" for="star1">
+        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+          <path
+            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+          ></path>
+        </svg>
+      </label>
+    </div>
+  </section>
+
+    <div class="end">
+      <footer>
+      <h2 style="display: flex;align-items: center;justify-content: center;padding: 20px;"> Follow us on:</h2>
+      <div class="sticky-bottom"> 
+          <div>
+            <ul class="social">
+              <li class="social-item">
+                <a class="social-link" href="#">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.19795 21.5H13.198V13.4901H16.8021L17.198 9.50977H13.198V7.5C13.198 6.94772 13.6457 6.5 14.198 6.5H17.198V2.5H14.198C11.4365 2.5 9.19795 4.73858 9.19795 7.5V9.50977H7.19795L6.80206 13.4901H9.19795V21.5Z" fill="currentColor"></path>
+                  </svg>
+                </a>
+              </li>
+              <li class="social-item">
+                <a class="social-link" href="#">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8 3C9.10457 3 10 3.89543 10 5V8H16C17.1046 8 18 8.89543 18 10C18 11.1046 17.1046 12 16 12H10V14C10 15.6569 11.3431 17 13 17H16C17.1046 17 18 17.8954 18 19C18 20.1046 17.1046 21 16 21H13C9.13401 21 6 17.866 6 14V5C6 3.89543 6.89543 3 8 3Z" fill="currentColor"></path>
+                  </svg>
+                </a>
+              </li>
+              <li class="social-item">
+                <a class="social-link" href="#">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 12C6 15.3137 8.68629 18 12 18C14.6124 18 16.8349 16.3304 17.6586 14H12V10H21.8047V14H21.8C20.8734 18.5645 16.8379 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C15.445 2 18.4831 3.742 20.2815 6.39318L17.0039 8.68815C15.9296 7.06812 14.0895 6 12 6C8.68629 6 6 8.68629 6 12Z" fill="currentColor"></path>
+                  </svg>
+                </a>
+              </li>
+              <li class="social-item">
+                <a class="social-link" href="#">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 7C9.23858 7 7 9.23858 7 12C7 14.7614 9.23858 17 12 17C14.7614 17 17 14.7614 17 12C17 9.23858 14.7614 7 12 7ZM9 12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12Z" fill="currentColor"></path>
+                    <path d="M18 5C17.4477 5 17 5.44772 17 6C17 6.55228 17.4477 7 18 7C18.5523 7 19 6.55228 19 6C19 5.44772 18.5523 5 18 5Z" fill="currentColor"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5 1C2.79086 1 1 2.79086 1 5V19C1 21.2091 2.79086 23 5 23H19C21.2091 23 23 21.2091 23 19V5C23 2.79086 21.2091 1 19 1H5ZM19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z" fill="currentColor"></path>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+          
+            <div> 
+              <p style="display:flex; justify-content: center;padding: 30px; color: #ffffff;"> 
+                &copy; 2024 BidFormula
+              </p> 
+            </div> 
+        
+         
+          </div> 
+        </footer>
+      </div>
+    
+
+  
+  
+
+
+  <script src="static/js/home.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+
+  
+</body>
+</html>

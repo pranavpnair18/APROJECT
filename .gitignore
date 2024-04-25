@@ -1,4 +1,6 @@
 # Django # 
+
+.env
  *.log 
  *.pot 
  *.pyc 
@@ -6,9 +8,9 @@
  db.sqlite3 
  media 
   
- # Backup files #  
+#  Backup files
  *.bak  
-  
+
  # If you are using PyCharm #  
  # User-specific stuff 
  .idea/**/workspace.xml 
@@ -134,4 +136,4 @@
  !.vscode/tasks.json  
  !.vscode/launch.json  
  !.vscode/extensions.json  
- .history
+   .history

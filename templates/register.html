@@ -1,6 +1,79 @@
-{% load static %} 
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reg.css' %}">
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="container">
+    <div class="content">
+        <h2 class="logo"></h2>
+        <div class="texts" style="margin-top: 30px;">
+            <h2>𝕭𝖎𝖉 𝕱𝖔𝖗𝖒𝖚𝖑𝖆<br><br>Welcome <br>to Auction</h2>
+            
+        </div>
+    </div>
+
+    <div class="logreg-box">
+
+        Registration-->
+        <!-- <div class="form_box register">
+            <form method="POST">
+                {% csrf_token %}
+                <h2> sign_up</h2>
+
+              
+
+                <div class="input-box">
+                    <span class="icon"> </span>
+                    {{ form.username.label }}
+                    {{ form.username }}
+                </div>
+
+                <div class="input-box">
+                    <span class="icon"> </span>
+                    {{ form.email.label }}
+                    {{ form.email }}
+                </div>
+
+                <div class="input-box">
+                    <span class="icon"> </span>
+                    {{ form.password1.label }}
+                   {{ form.password1 }}
+                </div>
+                <div id="passwordMessage" style="color: red; display: none;">Password must be at least 8 characters long.</div>
+                <div class="input-box">
+                  <span class="icon"> </span>
+                  {{ form.password2.label }}
+                  {{ form.password2 }}
+              </div>
+                
+                <div class="remember-forgot">
+                    <label><input type="checkbox">I agree to the Terms & Conditions</label>
+                </div>
+
+                <button type="submit" class="btn">submit</button>
+
+                <div class="error">
+                    {{ form.errors }}
+                </div>
+
+                <div class="login-register">
+                    <p>Already have an account? <a href="{% url 'login' %}" class="login-link">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html> --> 
   
- <!DOCTYPE html> 
+<!DOCTYPE html> 
   
  <html lang="en" dir="ltr"> 
   
@@ -8,7 +81,7 @@
    <meta charset="UTF-8"> 
    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
    <title>Register Form </title> 
-   <link rel="stylesheet" href="{% static '/css/login.css' %}"> 
+   <link rel="stylesheet" href="{% static '/css/reg.css' %}"> 
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous"> 
   
    <style> 
@@ -20,26 +93,28 @@
   
  </head> 
  <body> 
+    <video autoplay loop muted>
+        <source src="https://cdn.pixabay.com/video/2021/12/25/102436-660253854_large.mp4" type="video/mp4">
+      </video>
   
   
-  
- <div class="container "> 
-   <div class="h-100 par"> 
-  <div class="wrapper"> 
-     <div class="title"><span>Sign Up</div> 
-         <form method="POST"> 
+ <div class="box"> 
+  <form method="POST"> 
+ 
+     <h2>Sign Up</h2> 
+         
            {% csrf_token %} 
-             <div class="row"> 
-                 <i class="fas fa-user"></i> 
+             <div class="input-field"> 
+                 
                  {{ form.username }} 
              </div> 
-             <div class="row"> 
-                      <i class="fas fa-envelope-square"></i> 
+             <div class="input-field"> 
+                      <!-- <i class="fas fa-envelope-square"></i>  -->
   
                  {{ form.email }} 
              </div> 
-             <div class="row"> 
-                 <i class="fas fa-key"></i> 
+             <div class="input-field"> 
+                 <!-- <i class="fas fa-key"></i>  -->
   
                  {{ form.password1 }} 
              </div> 
@@ -47,21 +122,19 @@
   
              </div> 
              <div id="passwordMessage" style="color: red; display: none;">Password must be at least 8 characters long.</div> 
-             <div class="row"> 
-                 <i class="fas fa-key"></i> 
+             <div class="input-field"> 
+                 <!-- <i class="fas fa-key"></i>  -->
   
                  {{ form.password2 }} 
              </div> 
-                <div class="row button" > 
-                     <input type="submit" value="Submit"> 
-                 </div> 
+              <button type="submit">sign_up</button>
                  <div class="error"> 
   
                       {{ form.errors }} 
                  </div> 
   
                                        <div class="signup-link">  
-                Already have an account ? <a href="{% url 'login' %}" class="ml-2">Login</a>  
+               <p> Already have an account ? <a href="{% url 'login' %}" class="ml-2">Login</a>  </p>
               </div> 
          </form> 
   </div> 
@@ -100,4 +173,4 @@
  }); 
        </script> 
      </body> 
-   </html>
+   </html> 

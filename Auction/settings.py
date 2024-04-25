@@ -30,6 +30,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
  # SECURITY WARNING: don't run with debug turned on in production! 
 DEBUG = os.environ.get('DEBUG','False') == 'False'
 
+
+
 ALLOWED_HOSTS = []
 
 
@@ -45,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'bootstrap5',
+    
 ]
 
 MIDDLEWARE = [
@@ -114,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -124,8 +127,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -142,8 +146,10 @@ EMAIL_USE_TLS =os.environ.get('EMAIL_USE_TLS')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER') 
 EMAIL_HOST_PASSWORD =os.environ.get('EMAIL_HOST_PASSWORD') 
   
-MEDIA_ROOT = BASE_DIR/'uploads' 
+# MEDIA_ROOT = BASE_DIR/'uploads' 
 MEDIA_URL = '/media/' 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+
  
 
 
@@ -177,7 +183,7 @@ JAZZMIN_SETTINGS = {
      "welcome_sign": " AuctionG", 
   
      # Copyright on the footer 
-     "copyright": "Krishnanath.S", 
+     "copyright": "Pranav.P", 
   
      # List of model admins to search from the search bar, search bar omitted if excluded 
      # If you want to use a single search field you dont need to use a list, you can use a simple string  
@@ -196,7 +202,7 @@ JAZZMIN_SETTINGS = {
          # Url that gets reversed (Permissions can be added) 
          {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
          {"name": "View site",  "url": "home", "permissions": ["auth.view_user"]},
-         {"name": "View site",  "url": "home", "permissions": ["auth.view_user"]}, 
+        
   
          # external url that opens in a new window (Permissions can be added) 
          {"name": "Support", "url": "https://github.com/DJGuruji/Auction-G-", "new_window": True}, 

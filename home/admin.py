@@ -4,6 +4,7 @@ from .models import AuctionListing, Bid, Category, Message, UserProfile, Feedbac
 @admin.register(AuctionListing)
 class AuctionListingAdmin(admin.ModelAdmin):
     list_display = [field.name for field in AuctionListing._meta.fields]
+    list_editable = ['title','description','start_bid']
 
 @admin.register(Bid)
 class BidAdmin(admin.ModelAdmin):
@@ -20,7 +21,10 @@ class MessageAdmin(admin.ModelAdmin):
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
     list_display = [field.name for field in UserProfile._meta.fields]
+    list_editable = ['avail_bal']
+    
 
 @admin.register(Feedback)
 class FeedbackAdmin(admin.ModelAdmin):
     list_display = [field.name for field in Feedback._meta.fields]
+

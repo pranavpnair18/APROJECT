@@ -1,0 +1,60 @@
+{% extends 'base.html' %} 
+ {% block title %} 
+ bid
+ {% endblock %} 
+ {% block content %} 
+ <div class="main">
+    <div class="info">
+ <h2> {{ auction.title }}</h2>
+ <h4>Current Bid: {{ auction.current_bid }}</h4>
+ <h4>Seller : {{ auction.seller }}</h4>
+</div>
+ <div >
+    <form action="" method="post">
+{% csrf_token %}
+<div class="inn">
+    {{ form.as_table }}
+</div>
+<div class="butt">
+<input type="submit" value="bid now" class="btn">
+</div>
+</form>
+
+ </div>
+</div>
+<style>
+
+    .main{
+        margin-top: 70px;
+    }
+    .info{
+        text-align: center;
+    }
+.inn{
+    text-align: center;
+    margin-top: 50px;
+    
+}
+.butt{
+    text-align: center;
+    margin-top: 105px;
+    margin-bottom: 70px;
+}
+.btn {
+    
+    background-color: #fff;
+    color: black;
+   
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+label{
+    font-size: large;
+}
+form{
+    font-size: large;
+}
+</style>
+ {% endblock %} 

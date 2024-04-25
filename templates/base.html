@@ -1,138 +1,98 @@
-{% load static %} 
- <!DOCTYPE html> 
- <html> 
- <head> 
-   <meta charset="UTF-8"> 
-   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-   <title>{% block title %}{% endblock %}</title> 
-   <link rel="stylesheet" href="{% static '/css/base.css' %}"> 
-   <link rel="icon" href="{% static '/img/Auc.png' %}" type="image/x-icon"> 
-   <link rel="preconnect" href="https://fonts.googleapis.com"> 
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-   <link href="https://fonts.googleapis.com/css2?family=Metrophobic&display=swap" rel="stylesheet"> 
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
-   {% load bootstrap5 %} 
-   {% bootstrap_css %} 
-   {% bootstrap_javascript %} 
-   <style> 
-     body { 
-       font-family: 'Metrophobic', sans-serif; 
-     } 
-     footer{ 
-  
-       background: #dae4e7; 
-     } 
-     
-.footp{
-  font-size: 10px;
-}
-.offl{
-  color: #2f3435;
-}
-.insta{
-  color: #f81b58;
-}
-
-   </style> 
- </head> 
- <body> 
-   <nav class="p-6 sticky-top"> 
-     <div class="bg-danger"> 
-  
-       <span class="my-auto d-flex align-content-center navbar-toggler-icon ">    <a class=" p-2  ml-6 mt-2 " data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"> 
-         <i class="text-white fa-sharp fa-solid fa-bars"></i> 
-       </a> 
-       </span> 
-  
-       <h1 class="text-white headertext  fw-bold text-center  ">AuctionG 
-       </h1> 
-     </div> 
-  
-     <div class="offcanvas w-75 w-lg-50 w-md-50 offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel"> 
-       <div class=" offcanvas-header "> 
-         <img src="{% static '/img/Auc.png' %}" class="w-25  float-center"> 
-         <h1 class="offcanvas-title text-danger text-center fw-bold" id="offcanvasExampleLabel ">AuctionG</h1> 
-         <button type="button" class="btn-close mr-3 btn-outline-danger  ml-1 " data-bs-dismiss="offcanvas" aria-label="Close"></button> 
-  
-       </div> 
-       <div class="bg-danger p-1 "> 
-         <h3 class=" text-white text-center  ml-4 fst-italic ">Hello {{request.user}}</h3> 
-       </div> 
-       <div class="offcanvas-body"> 
-         <div> 
-           <ul class="list-unstyled  "> 
-             <li class="p-3 text-center my-auto "><a class=" offl fw-bold text-decoration-none"href="{% url 'home' %}">Home</a></li> 
-  
-             <li class=" p-3 text-center my-auto "><a class="offl  fw-bold  text-decoration-none"href="{% url 'about' %}">About</a></li> 
-  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}?{% now "U" %}"">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}?{% now "U" %}">
     
-  
-             <li class=" p-3  text-center my-auto "><a class=" offl fw-bold  text-decoration-none"href="{% url 'contact' %}">Contact</a></li> 
-  
-  
-             {% if user.is_authenticated and user.is_superuser or user.is_staff  %} 
-             <li class=" p-3 text-center my-auto"> 
-               <a class=" offl fw-bold  text-decoration-none" href="/admin/">Admin </a> 
-             </li> 
-  
-         
-             {% endif %} 
-           
-  
-             <li class=" p-5 text-center my-auto "><a class=" offl fw-bold  text-danger  text-decoration-none"href="{% url 'logout' %}">Logout</a> 
-             </li> 
-           </ul> 
-  
-  
-         </div> 
-  
-       </div> 
-     </div> 
-   </nav> 
-  
-   {% block content %} 
-   {% endblock %} 
-  
-   <footer class="sticky-bottom "> 
-  
+
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="nav">
+        <div class="logo-container">
+            <img src="{% static 'img/bidformula1.jpg' %}" class="logo" alt="Logo">
+            <span> 
+              <h5> 𝕭𝖎𝖉 𝕱𝖔𝖗𝖒𝖚𝖑𝖆</h5>
+              <h6>ɴᴏ ʟɪᴅ ᴏɴ ʙɪᴅs</h6>
+            </span>
+        </div>
+        <div class="nav-list">
+            <ul class="list">
+                <li class="list-items"><a class="active" href="/home">Home</a></li>
+                <li class="list-items"><a href="/history">History</a></li>
+                <li class="list-items"><a href="/about">About</a></li>
+                <li class="list-items"><a href="/contact">Contact</a></li>
+                {% if user.is_authenticated and user.is_superuser or user.is_staff  %} 
+                <li class="list-items"> 
+                  <a href="/admin">Admin </a> 
+                </li> 
+                {% endif %} 
+
+                <li class="dropdown">
+                    <i class="bi bi-person-circle" data-bs-toggle="dropdown"></i>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'profile' %}">{{request.user}}</a></li>
+                        <li><a class="dropdown-item" href="/profile">
+                            Balance :<br><i class="bi bi-cash"> {{ request.user.userprofile.avail_bal }}</i>
+                        </a></li>
+                        <hr style="color: #fff;">
+                        <li><a class="dropdown-item logout-btn" href="{% url 'logout_user' %}">Logout</a></li>
+                      </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    {% block content %}
+    {% endblock %}
+    <!-- Footer -->
+    <footer class="footer"> 
+        <div>
+          <ul class="social">
+            <li class="social-item">
+              <a class="social-link" href="/">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9.19795 21.5H13.198V13.4901H16.8021L17.198 9.50977H13.198V7.5C13.198 6.94772 13.6457 6.5 14.198 6.5H17.198V2.5H14.198C11.4365 2.5 9.19795 4.73858 9.19795 7.5V9.50977H7.19795L6.80206 13.4901H9.19795V21.5Z" fill="currentColor"></path>
+                </svg>
+              </a>
+            </li>
+            <li class="social-item">
+              <a class="social-link" href="/">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M8 3C9.10457 3 10 3.89543 10 5V8H16C17.1046 8 18 8.89543 18 10C18 11.1046 17.1046 12 16 12H10V14C10 15.6569 11.3431 17 13 17H16C17.1046 17 18 17.8954 18 19C18 20.1046 17.1046 21 16 21H13C9.13401 21 6 17.866 6 14V5C6 3.89543 6.89543 3 8 3Z" fill="currentColor"></path>
+                </svg>
+              </a>
+            </li>
+            <li class="social-item">
+              <a class="social-link" href="/">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 12C6 15.3137 8.68629 18 12 18C14.6124 18 16.8349 16.3304 17.6586 14H12V10H21.8047V14H21.8C20.8734 18.5645 16.8379 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C15.445 2 18.4831 3.742 20.2815 6.39318L17.0039 8.68815C15.9296 7.06812 14.0895 6 12 6C8.68629 6 6 8.68629 6 12Z" fill="currentColor"></path>
+                </svg>
+              </a>
+            </li>
+            <li class="social-item">
+              <a class="social-link" href="/">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 7C9.23858 7 7 9.23858 7 12C7 14.7614 9.23858 17 12 17C14.7614 17 17 14.7614 17 12C17 9.23858 14.7614 7 12 7ZM9 12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12Z" fill="currentColor"></path>
+                  <path d="M18 5C17.4477 5 17 5.44772 17 6C17 6.55228 17.4477 7 18 7C18.5523 7 19 6.55228 19 6C19 5.44772 18.5523 5 18 5Z" fill="currentColor"></path>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M5 1C2.79086 1 1 2.79086 1 5V19C1 21.2091 2.79086 23 5 23H19C21.2091 23 23 21.2091 23 19V5C23 2.79086 21.2091 1 19 1H5ZM19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z" fill="currentColor"></path>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="d_flex"> 
+            <p> &copy;2024 BidFormula </p> 
+        </div> 
+        </footer> 
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
    
-     <div class=" "> 
-       <ul class="d-flex justify-content-center list-unstyled "> 
-  
-         <li class="p-1 mx-3 mt-2 "> 
-           <a class="" href="https://github.com/DJGuruji/Auction-G-"> 
-             <i class="fs-3 text-dark fa-brands fa-github "></i> 
-  
-           </a> 
-         </li> 
-         <li class="p-1 mx-3 mt-2"> 
-  
-           <a class=" "href="https://instagram.com/__krishnanath?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D"> 
-             <span class="w-25"> 
-               <i class="fs-3 insta fa-brands fa-square-instagram "></i> 
-             </span> 
-           </a> 
-         </li> 
-         <li class="p-1 mx-3 mt-2 "> 
-  
-           <a class=""href=" https://www.linkedin.com/in/krishnanath-s-24055a227"> 
-  
-             <i class="fs-3 text-primary fa-brands fa-linkedin "></i> 
-  
-           </a> 
-         </li> 
-       </ul> 
-  
-  
-     </div> 
-  
- <div class="d-flex justify-content-center "> 
-       <p class="footp my-auto"> 
-         &copy; 2023 AuctionG 
-       </p> 
-     </div> 
-  
-   </footer> 
-  
- </body> 
- </html>
+
+</body>
+</html>

@@ -1,9 +1,76 @@
 {% extends 'base.html' %} 
  {% block title %} 
  ongoing
-   {% endblock %} 
-  
- {% block content %} 
- <h1>ongoing auctions </h1>
- 
- {% endblock %}
+ {% endblock %} 
+ {% block content %}
+ <div class="main">
+<div class="piig"><img src="{{ auctionpicture }}"  alt="Auction Picture" style="height: 250px;width: 250px;"></div>
+
+<div class="text"><h3 >{{ title }}</h3>  
+    <h5 style="margin-top: 20px;">Owned by:{{ seller }}</h5>                 
+<h6 style="margin-top: 20px;">Description: {{ desc }}</h6>
+<h6 style="margin-top: 20px;">Current bid: {{ curr }}</h6>
+<h4 style="border: 1px dotted white;">Category:{{ cat }}</h4>
+</div>
+
+<div class="date">
+<div class="dot"><h6>started on:{{ start }}</h6></div>
+
+<div class="dot"><h6>End in:{{ end }}</h6></div>
+</div>
+<div class="aad"><a href="{% url 'bids' auction.id %}" class="btn">bid_now</a></div>
+</div>
+<style>
+   .btn{
+    background-color: #fff;
+    color: black;
+   }
+    .aad{
+        position: absolute;
+        margin-left: 46%;
+        margin-right: 50%;
+        margin-top: -15%;
+    }
+    .dot {
+  height: 120px;
+  width: 200px;
+  padding: 70px 0;
+  text-align: center;
+  background-color: #000000;
+  border: 1px solid;
+  border-color: white;
+  color: rgb(255, 255, 255);
+  border-radius: 50%;
+  display: inline-block;
+}
+    
+    
+    .date{
+        position: relative;
+        display: flex;
+        justify-content:space-between;
+        margin: 100px;
+        
+        
+        
+    }
+    .main{
+        margin-bottom: 40px;
+        
+    }
+    
+.text{
+    text-align: center;
+    margin: 5%;
+    margin-top: 30px;
+}
+.piig {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+  width: 20%;
+}
+
+</style>
+{% endblock %}

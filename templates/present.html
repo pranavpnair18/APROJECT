@@ -1,0 +1,106 @@
+{% extends 'base.html' %} 
+ {% block title %} 
+ present
+ {% endblock %} 
+ {% load static %}
+{% block content %}
+<div class="main">
+{% for auc in auct %}
+
+  <div class="auction-item">
+    <div><img src="{% if auc.auctionpicture %}{{ auc.auctionpicture.url }}{% else %}{% static 'img/goldpig.jpg' %}{% endif %}" alt="{{ auc.title }} image" class="auction-image"></div>  
+   <div style="padding: 20px;"> <h2>{{ auc.title }}</h2>
+    <p>Category: {{ auc.category }}</p>
+    <p>Current bid: {{ auc.current_bid }}</p>
+    <p>Ends at: {{ auc.auction_end }}</p>
+  </div>
+  
+  <div class="btn" style="padding: 50px;">
+    <button class="shadow__btn">
+     <a href="{% url 'ongoing' auc.id %}">View detail</a>
+  </button>
+  </div>
+</div>
+</div>
+{% endfor %}
+<style>
+
+.main{
+margin-top: 70px;
+
+}
+
+.auction-item h2 {
+  margin-top: 0;
+}
+
+.auction-image {
+  height: 200px;
+  width: 200px;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+.btn-primary {
+  background-color: #337ab7;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #23527c;
+}
+
+.auction-item {
+  position: relative;
+  width: 100%;
+  /* margin-top: 70px; */
+  padding: 20px;
+  border: 4px solid #ff7a7a;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  /* flex-direction: ; */
+  background-color: black;
+  color: #ffffff;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shadow__btn {
+  padding: 10px 20px;
+  border: none;
+  font-size: 17px;
+  color: #fff;
+  border-radius: 7px;
+  letter-spacing: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: 0.5s;
+  transition-property: box-shadow;
+}
+
+.shadow__btn {
+  background: rgb(0,140,255);
+  box-shadow: 0 0 25px rgb(0,140,255);
+}
+
+.shadow__btn:hover {
+  box-shadow: 0 0 5px rgb(0,140,255),
+              0 0 25px rgb(0,140,255),
+              0 0 50px rgb(0,140,255),
+              0 0 100px rgb(0,140,255);
+}
+
+.shadow__btn a{
+  text-decoration: none;
+  font-size: 0.8rem;
+  color: #ddd;
+}
+
+</style>
+{% endblock %}
+
