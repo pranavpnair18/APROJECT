@@ -21,6 +21,8 @@ urlpatterns = [
  path('history',views.history, name ='history'),
  path('profile',views.profile, name ='profile'),
  path('present',views.present, name ='present'),
+ path('auctions',views.auctions, name ='auctions'),
+ 
  
   
  path('reset_pass',auth_views.PasswordResetView.as_view(template_name = "passwordreset.html"), name='reset_password'), 

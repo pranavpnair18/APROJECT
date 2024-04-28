@@ -1,0 +1,54 @@
+{% extends 'base.html' %} 
+ {% block title %} 
+ Auctions
+ {% endblock %} 
+ {% load static %}
+{% block content %}
+<div class="main">
+{% for a in auctions %}
+
+  <div class="auction-item">
+    <div><img src="{% if a.auctionpicture %}{{ a.auctionpicture.url }}{% else %}{% static 'img/goldpig.jpg' %}{% endif %}" alt="{{ auc.title }} image" class="auction-image"></div>  
+   <div style="padding: 20px;"> <h2>{{ a.title }}</h2>
+    <p>Category: {{ a.category }}</p>
+    <p>Current bid: {{ a.current_bid }}</p>
+    <p>Ends at: {{ a.auction_end }}</p>
+  </div>
+  
+  
+</div>
+</div>
+{% endfor %}
+<style>
+.main{
+    margin-top: 70px;
+    
+    }
+    
+    .auction-item h2 {
+      margin-top: 0;
+    }
+    
+    .auction-image {
+      height: 200px;
+      width: 200px;
+      margin: 20px;
+      border-radius: 10px;
+    }
+    .auction-item {
+  position: relative;
+  width: 100%;
+  /* margin-top: 70px; */
+  padding: 20px;
+  border: 4px solid #ff7a7a;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  /* flex-direction: ; */
+  background-color: black;
+  color: #ffffff;
+  justify-content: space-between;
+  align-items: center;
+}
+</style>
+{% endblock %}

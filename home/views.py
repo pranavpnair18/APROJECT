@@ -109,9 +109,22 @@ def present(request):
     
     cont = {
     'auct': auct,
+   
+
     
     }
     return render(request, 'present.html', cont) 
+
+@login_required(login_url='login')
+def auctions(request):
+    acs = AuctionListing.objects.values('title', 'category', 'current_bid', 'auction_end', 'auctionpicture')
+   
+    con = {
+        'auctions': acs,
+
+    }
+    return render(request, 'auctions.html', con)
+
 
 @login_required(login_url ='login')  
 def ongoing(request, auction_id): 
